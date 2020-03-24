@@ -24,6 +24,11 @@ def get_resumen():
     viajes = [item.serialize() for item in  Viajes.query.all()]
     return jsonify(viajes), 200
 
+@app.route('/transporte',  methods = ['GET'])
+def get_transp():
+    transporte = [item.serialize() for item in Tipos_Transportes.query.all()]
+    return jsonify(transporte), 200
+
 
 @app.route('/agregar-viaje',  methods = ['POST'])
 def post_viaje():

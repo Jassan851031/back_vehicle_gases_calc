@@ -11,6 +11,9 @@ class Tipos_Transportes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     transporte = db.Column(db.String(100), nullable=False)
     factor = db.Column(db.Float, nullable=False)
+
+    def __repr__(self):
+        return '<Tipos_Transportes %r>' % self.name
     
     def serialize(self):
         return {

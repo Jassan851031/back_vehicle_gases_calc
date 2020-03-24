@@ -20,7 +20,7 @@ class Viajes(db.Model):
     viaje_redondo = db.Column(db.Boolean, nullable=False)
     emision = db.Column(db.Float, nullable=False)
 
-    
+
     def serialize(self):
         return {
             'punto_partida': self.punto_partida,
