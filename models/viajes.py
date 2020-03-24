@@ -2,6 +2,9 @@ import sqlite3
 from flask import Flask, g
 from flask_sqlalchemy import SQLAlchemy
 
+from models.usuarios import Usuarios
+from models.tipos_transportes import Tipos_Transportes
+
 db = SQLAlchemy()
 
 class Viajes(db.Model):
@@ -22,9 +25,9 @@ class Viajes(db.Model):
         return {
             'punto_partida': self.punto_partida,
             'punto_termino': self.punto_termino,
-            'id_transporte': self.id_transporte,
+            'id_transporte': Tipos_Transportes.query.filter_by(id = self.id_transporte).first().transporte,
             'distancia_km': self.distancia_km,
-            'id_usuario': self.id_usuario,
+            'nombre_usuario': Usuarios.query.filter_by(id = self.id_usuario).first().nombre,
             'viaje_redondo': self.viaje_redondo,
             'emision': self.emision
         }
